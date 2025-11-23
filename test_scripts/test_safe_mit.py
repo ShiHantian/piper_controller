@@ -31,8 +31,9 @@ def config_joint_limit(piper):
 
 def main():
     piper = C_PiperInterface_V2("can0")
-    print("FirmwareVersion:", piper.GetPiperFirmwareVersion())
     piper.ConnectPort()
+    time.sleep(0.03) # Time is required to read the firmware response frame; otherwise return -0x4AF.
+    print("firmware version: ", piper.GetPiperFirmwareVersion())
     enabled_flag = enable_piper(piper)
     if not enabled_flag:
         return
