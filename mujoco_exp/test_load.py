@@ -2,7 +2,7 @@ import mujoco
 import mujoco.viewer
 import time
 
-model = mujoco.MjModel.from_xml_path('./asserts/mujoco_model/piper_description.xml')
+model = mujoco.MjModel.from_xml_path('/home/hantian/Desktop/piper_controller/mujoco_exp/asserts/piper.xml')
 data = mujoco.MjData(model)
 
 with mujoco.viewer.launch_passive(model, data) as viewer:
@@ -19,6 +19,6 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
         
         viewer.sync()
         
-        time.sleep(0.016)  # ~60 Hz
+        time.sleep(1/60)  # ~60 Hz
 
 print("Viewer closed")
